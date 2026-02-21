@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Booking Trends (Zaman Çizelgesi)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e3f8fe39-5005-aec2-4393-d4a0a9ec5a0f"
+  }
+}

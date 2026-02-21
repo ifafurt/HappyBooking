@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Revenue KPIs (Büyük Rakamlar)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "41a5b457-ba1e-bb97-43d3-0b6f635b77af"
+  }
+}

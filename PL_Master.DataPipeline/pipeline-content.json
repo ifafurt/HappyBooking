@@ -1,0 +1,223 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "437cdccf-ee94-947e-4448-7cee2a2f3732",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "bronze_to_silver",
+        "dependsOn": [
+          {
+            "activity": "2 Wait 20 second",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "7b6e18e8-e591-89a2-46e0-0e3064c238b0",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "quality_tests_ge",
+        "dependsOn": [
+          {
+            "activity": "4 Wait 30 second",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[dbo].[sp_refresh_gold_layer]"
+        },
+        "linkedService": {
+          "name": "WH_happy_booking",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "be6484de-e911-43fa-8c24-ff9d107c2cd1",
+              "endpoint": "jqxoclvcaytehaug76yuyzua24-em4b4j4etjqulp7jbpquljfaei.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "271e3823-9a84-4561-bfe9-0be145a4a022"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "WH_happy_booking",
+        "dependsOn": [
+          {
+            "activity": "5 Wait 60 second",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "f37ae7fe-de1e-9ce3-4926-5f41d46739c4",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "bronze_ingest_batch",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "c5f0a2a7-c137-a838-4493-bff8745b6b5d",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "stream_to_silver",
+        "dependsOn": [
+          {
+            "activity": "3 Wait 30 second",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 20
+        },
+        "name": "2 Wait 20 second",
+        "dependsOn": [
+          {
+            "activity": "api_ingestion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 30
+        },
+        "name": "4 Wait 30 second",
+        "dependsOn": [
+          {
+            "activity": "stream_to_silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "24e18182-490f-917b-40b6-c86361813ef1",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "api_ingestion",
+        "dependsOn": [
+          {
+            "activity": "1 Wait 10 Second",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 30
+        },
+        "name": "3 Wait 30 second",
+        "dependsOn": [
+          {
+            "activity": "bronze_to_silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 10
+        },
+        "name": "1 Wait 10 Second",
+        "dependsOn": [
+          {
+            "activity": "bronze_ingest_batch",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 60
+        },
+        "name": "5 Wait 60 second",
+        "dependsOn": [
+          {
+            "activity": "quality_tests_ge",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
