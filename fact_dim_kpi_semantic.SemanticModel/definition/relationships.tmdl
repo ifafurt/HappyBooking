@@ -1,0 +1,4 @@
+relationship 5f72c53b-e52b-08ea-e50b-62282b42c8cd
+	fromColumn: dim_city.city
+	toColumn: fact_booking.city
+

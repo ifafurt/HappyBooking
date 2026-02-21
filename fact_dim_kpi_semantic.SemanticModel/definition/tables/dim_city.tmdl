@@ -1,0 +1,57 @@
+table dim_city
+	lineageTag: aab84d1c-5aef-4bb2-af0b-a613cc774e22
+	sourceLineageTag: [dbo].[dim_city]
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6b3ab635-b9a3-4e6d-a0e2-61bb127073fe
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4113a997-aeee-4c07-8bf8-cc407eea2962
+		sourceLineageTag: country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 15eeb944-6401-4b8d-8378-f8e65f3f1090
+		sourceLineageTag: latitude
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: be5305ef-e692-49f7-b07a-3239b4cb3d61
+		sourceLineageTag: longitude
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_city = entity
+		mode: directLake
+		source
+			entityName: dim_city
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

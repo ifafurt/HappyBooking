@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.70\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY26SU02\",\"version\":{\"visual\":\"2.6.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY26SU02",
+            "path": "BaseThemes/CY26SU02.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "89b1946222bd197aca8a",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"fcc67975c63ecc6a817d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.930178432893715,\"y\":0,\"z\":0,\"width\":1270.0698215671061,\"height\":719.9379363847944,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"azureMap\",\"projections\":{\"Tooltips\":[{\"queryRef\":\"CountNonNull(fact_booking.booking_id)\"}],\"Category\":[{\"queryRef\":\"dim_city.city\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact_booking\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"booking_id\"}},\"Function\":5},\"Name\":\"CountNonNull(fact_booking.booking_id)\",\"NativeReferenceName\":\"Count of booking_id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_city.city\",\"NativeReferenceName\":\"city\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"mapControls\":[{\"properties\":{\"defaultStyle\":{\"expr\":{\"Literal\":{\"Value\":\"'road'\"}}},\"showStylePicker\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"showNavigationControls\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"showSelectionControl\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"centerLongitude\":{\"expr\":{\"Literal\":{\"Value\":\"5.191486395565107D\"}}},\"zoom\":{\"expr\":{\"Literal\":{\"Value\":\"7.37D\"}}},\"centerLatitude\":{\"expr\":{\"Literal\":{\"Value\":\"51.60154459737055D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"bubbleLayer\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"filledMap\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"mapTransparency\":{\"expr\":{\"Literal\":{\"Value\":\"40L\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 719.94,
+          "width": 1270.07,
+          "x": 9.93,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

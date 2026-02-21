@@ -1,0 +1,95 @@
+table fact_booking
+	lineageTag: a98336f7-1ac2-42dc-bc35-1a605f9be77b
+	sourceLineageTag: [dbo].[fact_booking]
+
+	column booking_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6c912742-e7bd-4161-81c8-fe7ba67953fb
+		sourceLineageTag: booking_id
+		summarizeBy: none
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5e65c5cb-1d1f-48cd-b394-3da629a3e6c3
+		sourceLineageTag: hotel_id
+		summarizeBy: none
+		sourceColumn: hotel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 47851000-694f-4d4b-aad2-edeeb3aabf83
+		sourceLineageTag: hotel_name
+		summarizeBy: none
+		sourceColumn: hotel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4f8ce326-300c-4584-8ba4-2fa0ac81418e
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column checkin_date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9e375312-dc41-41f2-8527-1b65fbcada0e
+		sourceLineageTag: checkin_date
+		summarizeBy: none
+		sourceColumn: checkin_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column checkout_date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 607088bc-9756-4c19-bae9-8d242a558847
+		sourceLineageTag: checkout_date
+		summarizeBy: none
+		sourceColumn: checkout_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column nights
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fe884c94-66af-4e3b-9382-e6183a9abaf2
+		sourceLineageTag: nights
+		summarizeBy: none
+		sourceColumn: nights
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_price_eur
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 9bae5f49-ed79-43c2-9b2c-870d37bea439
+		sourceLineageTag: total_price_eur
+		summarizeBy: none
+		sourceColumn: total_price_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_booking = entity
+		mode: directLake
+		source
+			entityName: fact_booking
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Environment",
+    "displayName": "ENV_happy_booking",
+    "description": "Environment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a4a40edd-8c3d-b816-4194-ea07a33b50cb"
+  }
+}
